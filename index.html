@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Malaa Mobile Application - Library List</title>
+    <title>Malaa Mobile Application - Open Source Licenses</title>
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -59,6 +59,7 @@
         const container = document.getElementById("libraryList");
 
         libraries.forEach((lib) => {
+          console.log({ lib });
           const libElement = document.createElement("div");
           libElement.className = "library-item";
 
@@ -76,6 +77,8 @@
                 <p><strong>Repository:</strong> <a href="${
                   lib.repository.url
                 }" target="_blank">${lib.repository.url}</a></p>
+
+                <p>${lib._licenseContent ? lib._licenseContent : "N/A"}</p>
             </div>
         `;
 
