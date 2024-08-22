@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malaa Mobile Application - Library List</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        background: #f4f4f9;
+        color: #333;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      header h1 {
+        font-size: 24px;
+        color: #0a84ff;
+      }
+      .library-list {
+        list-style: none;
+        padding: 0;
+      }
+      .library-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .library-item h2 {
+        color: #333;
+        margin-top: 0;
+      }
+      .details p {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #666;
+      }
+      .details a {
+        color: #0a84ff;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Malaa Mobile Application - Open Source Libraries</h1>
+      <p>
+        This page lists open source libraries used in the Malaa Mobile
+        Application.
+      </p>
+    </header>
+    <div id="libraryList" class="library-list"></div>
+    <script>
+      function displayLibraries(libraries) {
+        const container = document.getElementById("libraryList");
+
+        libraries.forEach((lib) => {
+          const libElement = document.createElement("div");
+          libElement.className = "library-item";
+
+          libElement.innerHTML = `
+            <h2>${lib.libraryName} - v${lib.version}</h2>
+            <div class="details">
+                <p><strong>Description:</strong> ${lib._description}</p>
+                <p><strong>License:</strong> ${lib._license}</p>
+                <p><strong>Author:</strong> ${
+                  lib.author ? lib.author.name : "N/A"
+                }</p>
+                <p><strong>Homepage:</strong> <a href="${
+                  lib.homepage
+                }" target="_blank">${lib.homepage}</a></p>
+                <p><strong>Repository:</strong> <a href="${
+                  lib.repository.url
+                }" target="_blank">${lib.repository.url}</a></p>
+            </div>
+        `;
+
+          container.appendChild(libElement);
+        });
+      }
+
+      function fetchData() {
+        fetch("licenses.json")
+          .then((response) => response.json())
+          .then((data) => displayLibraries(data))
+          .catch((error) => console.error("Failed to load data:", error));
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        fetchData();
+      });
+    </script>
+  </body>
+</html>

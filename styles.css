@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.library-list {
+  list-style: none;
+  padding: 0;
+}
+
+.library-item {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.library-item h2 {
+  margin-top: 0;
+}
+
+.details {
+  margin-top: 10px;
+}
+
+.details p {
+  margin: 5px 0;
+}
