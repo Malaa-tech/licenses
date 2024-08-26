@@ -48,10 +48,6 @@
   <body>
     <header>
       <h1>Malaa Mobile Application - Open Source Libraries</h1>
-      <p>
-        This page lists open source libraries used in the Malaa Mobile
-        Application.
-      </p>
     </header>
     <div id="libraryList" class="library-list"></div>
     <script>
@@ -65,7 +61,7 @@
 
           libElement.innerHTML = `
             <h2>${lib.libraryName} - v${lib.version}</h2>
-            <div class="details">
+            <div class="details" style="overflow:hidden">
                 <p><strong>Description:</strong> ${lib._description}</p>
                 <p><strong>License:</strong> ${lib._license}</p>
                 <p><strong>Author:</strong> ${
