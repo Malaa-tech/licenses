@@ -11,6 +11,6 @@ deploy-pages:
     - cd public
     - git init && git add -A
     - git -c user.email=gitlab-ci@malaa.tech -c "user.name=Malaa GitLab CI" commit -m "Deploy from GitLab"
-    - git push --force git@github.com:Malaa-tech/licenses.github.io.git HEAD:main
+    - git push --force git@github.com:Malaa-tech/licenses.git HEAD:main
   only:
     - main
