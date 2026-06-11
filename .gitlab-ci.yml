@@ -6,11 +6,7 @@ deploy-pages:
     - cp "$SSH_DEPLOY_KEY" ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
     - ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
   script:
-    - mkdir -p public
-    - cp index.html licenses.json public/
-    - cd public
-    - git init && git add -A
-    - git -c user.email=gitlab-ci@malaa.tech -c "user.name=Malaa GitLab CI" commit -m "Deploy from GitLab"
-    - git push --force git@github.com:Malaa-tech/licenses.git HEAD:main
+    - git remote add github git@github.com:Malaa-tech/licenses.git 2>/dev/null || git remote set-url github git@github.com:Malaa-tech/licenses.git
+    - git push github HEAD:main
   only:
     - main
