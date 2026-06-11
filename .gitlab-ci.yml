@@ -1,0 +1,16 @@
+deploy-pages:
+  image: node:24.16.0-slim
+  before_script:
+    - apk add --no-cache git openssh-client
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - cp "$SSH_DEPLOY_KEY" ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+    - ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+  script:
+    - npm ci
+    - npm run build
+    - cd dist
+    - git init && git add -A
+    - git -c user.email=gitlab-ci@malaa.tech -c user.name=Malaa GitLab CI -m "Deploy from GitLab"
+    - git push --force git@github.com:Malaa-tech/licenses.github.io.git HEAD:main
+  only:
+    - main
