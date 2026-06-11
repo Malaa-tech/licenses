@@ -7,6 +7,6 @@ deploy-pages:
     - ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
   script:
     - git remote add github git@github.com:Malaa-tech/licenses.git 2>/dev/null || git remote set-url github git@github.com:Malaa-tech/licenses.git
-    - git push github HEAD:main
+    - git push --force github HEAD:main
   only:
     - main
